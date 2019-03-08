@@ -1,0 +1,49 @@
+name: "EconomySystem"
+version: 1.0
+author: Cloudy
+main: cz.cloudy.economysystem.Main
+api-version: 1.13
+
+commands:
+  lock:
+    description: Locks chest
+    usage: /lock [code]
+  addowner:
+    description: Adds owner to locked chest
+    usage: /addowner [playerName]
+  sethome:
+    description: Sets new home
+    usage: /sethome
+  home:
+    description: Teleports home.
+    usage: /home
+  back:
+    description: Teleports back.
+    usage: /back
+  myaccount:
+    description: Shows information about your bank account.
+    usage: /myaccount
+  bankgive:
+    description: Gives player coins from banks fund.
+    usage: /bankgive
+  banktake:
+    description: Takes coins from player to banks fund.
+    usage: /banktake
+  banksellloc:
+    description: Sets bank sell chest.
+    usage: /banksellloc
+  myspec:
+    description: Gets player specialization.
+    usage: /myspec
+  ysay:
+    description: .
+    usage: .
+  setspec:
+    description: Gives player new specialization.
+    usage: /setspec [Player] [SpecClass]
+  addability:
+    description: Gives player new ability.
+    usage: /addability [Player] [AbilityClass]
+  protect:
+    description: Protects your chests or doors.
+    usage: /protect
