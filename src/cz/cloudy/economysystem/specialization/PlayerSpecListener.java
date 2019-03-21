@@ -6,6 +6,7 @@
 
 package cz.cloudy.economysystem.specialization;
 
+import cz.cloudy.economysystem.ActiveConst;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -24,6 +25,8 @@ public class PlayerSpecListener
 
     @EventHandler
     public void onPlayerAttack(EntityDamageByEntityEvent event) {
+        if (!ActiveConst.SPECS) return;
+
         Player player = getPlayer(event.getDamager());
         if (player == null) {
             return;
@@ -39,6 +42,8 @@ public class PlayerSpecListener
 
     @EventHandler
     public void onBlockDamage(BlockDamageEvent event) {
+        if (!ActiveConst.SPECS) return;
+
         Player player = event.getPlayer();
         if (player == null) {
             return;

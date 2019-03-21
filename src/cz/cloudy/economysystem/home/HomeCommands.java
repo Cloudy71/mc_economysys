@@ -6,6 +6,7 @@
 
 package cz.cloudy.economysystem.home;
 
+import cz.cloudy.economysystem.ActiveConst;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -18,6 +19,8 @@ public class HomeCommands
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!ActiveConst.HOME) return false;
+
         if (!(sender instanceof Player)) {
             return false;
         }

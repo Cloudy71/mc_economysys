@@ -6,6 +6,7 @@
 
 package cz.cloudy.economysystem.redstonecoding;
 
+import cz.cloudy.economysystem.ActiveConst;
 import cz.cloudy.economysystem.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -20,6 +21,8 @@ public class CodingListener
         implements Listener {
     @EventHandler
     public void onRedstoneBlock(BlockRedstoneEvent event) {
+        if (!ActiveConst.CODING) return;
+
         Block block = event.getBlock();
         boolean setFace = false;
         if (block.getType() == Material.LEVER) {

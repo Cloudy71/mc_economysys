@@ -6,6 +6,7 @@
 
 package cz.cloudy.economysystem.locker;
 
+import cz.cloudy.economysystem.ActiveConst;
 import cz.cloudy.economysystem.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -26,6 +27,8 @@ public class LockerListener
         implements Listener {
     @EventHandler
     public void onOpen(PlayerInteractEvent event) {
+        if (!ActiveConst.LOCKER) return;
+
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) {
             return;
         }
@@ -86,6 +89,8 @@ public class LockerListener
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
+        if (!ActiveConst.LOCKER) return;
+
 //        if (!event.getWhoClicked()
 //                  .getUniqueId().toString()
 //                  .equals("Cloudy69")) {
@@ -105,34 +110,31 @@ public class LockerListener
 
                 Bukkit.getServer()
                       .getScheduler()
-                      .scheduleSyncDelayedTask(Main.instance, new Runnable() {
-                          @Override
-                          public void run() {
-                              int correct = 0;
-                              int maxCorrect = 0;
-                              for (int i = 0; i < 9; i++) {
-                                  String k = lockedChest.getCodeInventory()
-                                                        .getLock()
-                                                        .substring(i, i + 1);
-                                  ItemStack itemStack = event.getInventory()
-                                                             .getItem(9 + i);
-                                  if (k.equals("0") && itemStack != null) {
-                                      event.getWhoClicked()
-                                           .closeInventory();
-                                      return;
-                                  }
-                                  if (k.equals("1")) {
-                                      maxCorrect++;
-                                      if (itemStack != null) {
-                                          correct++;
-                                      }
-                                  }
-                              }
-
-                              if (maxCorrect == correct) {
+                      .scheduleSyncDelayedTask(Main.instance, () -> {
+                          int correct = 0;
+                          int maxCorrect = 0;
+                          for (int i = 0; i < 9; i++) {
+                              String k = lockedChest.getCodeInventory()
+                                                    .getLock()
+                                                    .substring(i, i + 1);
+                              ItemStack itemStack = event.getInventory()
+                                                         .getItem(9 + i);
+                              if (k.equals("0") && itemStack != null) {
                                   event.getWhoClicked()
-                                       .openInventory(lockedChest.getChests()[0].getBlockInventory());
+                                       .closeInventory();
+                                  return;
                               }
+                              if (k.equals("1")) {
+                                  maxCorrect++;
+                                  if (itemStack != null) {
+                                      correct++;
+                                  }
+                              }
+                          }
+
+                          if (maxCorrect == correct) {
+                              event.getWhoClicked()
+                                   .openInventory(lockedChest.getChests()[0].getBlockInventory());
                           }
                       }, 5);
             }
@@ -142,6 +144,8 @@ public class LockerListener
 
     @EventHandler
     public void onBlockDamage(BlockDamageEvent event) {
+        if (!ActiveConst.LOCKER) return;
+
         Player player = event.getPlayer();
         if (player == null) {
             return;

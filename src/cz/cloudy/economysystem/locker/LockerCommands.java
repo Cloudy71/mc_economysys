@@ -6,6 +6,7 @@
 
 package cz.cloudy.economysystem.locker;
 
+import cz.cloudy.economysystem.ActiveConst;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -20,6 +21,8 @@ public class LockerCommands
         implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!ActiveConst.LOCKER) return false;
+
         if (!(sender instanceof Player)) {
             return false;
         }

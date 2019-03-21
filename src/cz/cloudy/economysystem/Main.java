@@ -12,6 +12,7 @@ import cz.cloudy.economysystem.bank.BankCommands;
 import cz.cloudy.economysystem.home.HomeCommands;
 import cz.cloudy.economysystem.home.HomeLocation;
 import cz.cloudy.economysystem.home.HomeLocations;
+import cz.cloudy.economysystem.items.ItemsCommands;
 import cz.cloudy.economysystem.locker.*;
 import cz.cloudy.economysystem.redstonecoding.CodingListener;
 import cz.cloudy.economysystem.redstonecoding.CodingRegister;
@@ -72,8 +73,12 @@ public class Main
             getCommand("back").setExecutor(homeCommands);
             BankCommands bankCommands = new BankCommands();
             getCommand("myaccount").setExecutor(bankCommands);
+            getCommand("banksend").setExecutor(bankCommands);
             PlayerSpecCommands playerSpecCommands = new PlayerSpecCommands();
             getCommand("myspec").setExecutor(playerSpecCommands);
+            ItemsCommands itemsCommands = new ItemsCommands();
+            getCommand("setcolor").setExecutor(itemsCommands);
+            getCommand("blinkrandomly").setExecutor(itemsCommands);
 
             Locker.initialize();
             Bank.initialize();

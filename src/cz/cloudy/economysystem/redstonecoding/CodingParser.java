@@ -4,16 +4,6 @@
   Time: 15:04
 */
 
-// TODO: Make functions to return just values as text replacement (:v:=RAND 5 => :v:=3 => Parse)
-// TODO: Arithmetics :x:=:x:+1
-// TODO: [] function to make array from multiple inputs
-// TODO: \ character to concat two lines.
-// TODO: Coding with books (after version 1.14)
-// TODO: Complex code activation with code start "XCODE" || "XEXT" (More than 3 inputs by stacking blocks)
-// TODO: Block manipulation functions (BSET x y z bid), (BGET x y z)
-// TODO: Finish ELSE, ELSEIF
-// TODO: Support string variables by using \" character with space ignoring.
-
 package cz.cloudy.economysystem.redstonecoding;
 
 import cz.cloudy.economysystem.Main;

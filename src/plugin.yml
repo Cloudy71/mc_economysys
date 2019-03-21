@@ -23,6 +23,9 @@ commands:
   myaccount:
     description: Shows information about your bank account.
     usage: /myaccount
+  banksend:
+    description: Sends specified amount of money to other player.
+    usage: /banksend [Player] [Amount]
   bankgive:
     description: Gives player coins from banks fund.
     usage: /bankgive
@@ -47,3 +50,9 @@ commands:
   protect:
     description: Protects your chests or doors.
     usage: /protect
+  setcolor:
+    description: Sets leather armor color.
+    usage: /setcolor [Red] [Green] [Blue]
+  blinkrandomly:
+    description: Changes armor color every one second.
+    usage: /blinkrandomly [interval]
